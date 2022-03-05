@@ -15,12 +15,12 @@ class Simon {
             startButton,
             round
         }
-        this.errorSound = new Audio('./sounds/error.wav');
+        this.errorSound = new Audio('./sounds/sounds_error.wav');
         this.buttonSounds = [
-            new Audio('./sounds/1.mp3'),
-            new Audio('./sounds/2.mp3'),
-            new Audio('./sounds/3.mp3'),
-            new Audio('./sounds/4.mp3'),
+            new Audio('./sounds/sounds_1.mp3'),
+            new Audio('./sounds/sounds_2.mp3'),
+            new Audio('./sounds/sounds_3.mp3'),
+            new Audio('./sounds/sounds_4.mp3'),
         ]
     }
 
@@ -113,6 +113,7 @@ class Simon {
 
     // Actualiza el simon cuando el jugador pierde
     gameLost() {
+        swal('Juego','Lo lamentamos, perdiste el juego!', 'error')
         this.errorSound.play();
         this.display.startButton.disabled = false; 
         this.blockedButtons = true;
@@ -126,6 +127,10 @@ class Simon {
             element.classList.add('winner');
         });
         this.updateRound('🏆');
+    }
+    ganoElJuego(){
+        swal('Juego','Felicitaciones, ganaste el juego!', 'success')
+      .then(this.inicializar)
     }
 }
 
